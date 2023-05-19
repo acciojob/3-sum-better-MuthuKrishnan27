@@ -1,29 +1,30 @@
 function threeSum(arr, target) {
 // write your code here
 	let a = [];
-	let sum = 0;
 	for(let i=0;i<arr.length-2;i++){
+		let sum = 0;
 		let k = i+3;
 		for(let j=i;j<arr.length && j<k;j++){
 			sum+=arr[j];
 		}
 		a.push(sum);
 	}
-	
+	// a[6 9 12]
 	let z = [];
-	let min;
+	let val;
 	for(let i=0;i<a.length;i++){
-		if(a[i]<0){
-			min = a[i] * -1;
+		val = a[i] - target;
+		if(val<0){
+			val = val * -1;
 		}
-		z.push(min - target);
+		z.push(val);
 	}
-
+	// z[24 21 18]
 	let min_index = 0;
-	let m = z[0];
+	let min = z[0];
 	for(let i=1;i<z.length;i++){
-		if(z[i]<m){
-			m = z[i];
+		if(z[i]<min){
+			min = z[i];
 			min_index = i;
 		}
 	}
