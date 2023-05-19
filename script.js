@@ -9,27 +9,26 @@ function threeSum(arr, target) {
 		}
 		a.push(sum);
 	}
+	
 	let z = [];
 	let min;
 	for(let i=0;i<a.length;i++){
 		if(a[i]<0){
-			z[i] = z[i] * -1;
+			min = a[i] * -1;
 		}
-		z[i] = z[i] - target;
+		z.push(min - target);
 	}
 
 	let min_index = 0;
 	let m = z[0];
-	for(let i=0;i<z.length;i++){
-		for(let j=i+1;j<z.length;j++){
-			if(z[j]<m){
-				m=z[j];
-				min_index=j;
-			}
+	for(let i=1;i<z.length;i++){
+		if(z[i]<m){
+			m = z[i];
+			min_index = i;
 		}
 	}
-	min = a[min_index];
-	return min;
+	let mn = a[min_index];
+	return mn;
 }
 
 module.exports = threeSum;
